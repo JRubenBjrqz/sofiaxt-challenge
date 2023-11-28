@@ -9,12 +9,13 @@
 
 :root {
   --header-height: 3rem;
-  --nav-width: 68px;
-  --first-color: #4723d9;
-  --first-color-light: #afa5d9;
-  --white-color: #f7f6fb;
+  --sidenav-width: 68px;
+  --primary-color: #2d86b3;
+  --gray-color: #f1f2f4;
+  --font-color: #1e1e1e;
+  --white-color: #fff;
   --body-font: 'Montserrat', sans-serif;
-  --normal-font-size: 1rem;
+  --normal-font-size: 0.90rem;
   --z-fixed: 100;
 }
 

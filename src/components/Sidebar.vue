@@ -2,31 +2,47 @@
     <div>
       <header class="header" :class="{ 'body-pd': isHeaderPd }" id="header">
         <div class="header_toggle">
-          <i class="bi bi-0-circle" @click="toggleNavbar" id="header-toggle"></i>
+          <i class="bi bi-list" @click="toggleNavbar" id="header-toggle"></i>
         </div>
-        <div class="header_img">
+        <!-- <div class="header_img">
           <img src="https://i.imgur.com/hczKIze.jpg" alt="" />
-        </div>
+        </div> -->
       </header>
-      <div class="l-navbar" :class="{ 'show': isNavbarVisible }" id="nav-bar">
+      <div class="sidenavbar" :class="{ 'show': isNavbarVisible }" id="nav-bar">
         <nav class="nav">
           <div>
             <a href="#" class="nav_logo">
-              <i class="bx bx-layer nav_logo-icon"></i>
-              <span class="nav_logo-name">BBBootstrap</span>
+              <img src="https://www.sofiaxt.com/favicon-16x16.png" alt="" class="nav_logo-icon">
+              <span class="nav_logo-name">SofíaXT</span>
+            </a>
+            <a href="#" class="nav_link" @click="preventDefault">
+                <i class="bi bi-house nav_icon"></i>
+                <span>Inicio</span>
             </a>
             <div class="nav_list">
               <a href="#" class="nav_link active" @click="setActiveLink(1)">
-                <i class="bx bx-grid-alt nav_icon"></i>
-                <span class="nav_name">Dashboard</span>
+                <i class="bi bi-people nav_icon"></i>
+                <span>Grupos</span>
               </a>
               <!-- Resto de enlaces aquí -->
+              <a href="#" class="nav_link" @click="setActiveLink(2)">
+                <i class="bi bi-journal nav_icon"></i>
+                <span>Smartbooks</span>
+              </a>
+              <a href="#" class="nav_link" @click="setActiveLink(3)">
+                <i class="bi bi-gear nav_icon"></i>
+                <span>Utilidades</span>
+              </a>
+              <a href="#" class="nav_link" @click="setActiveLink(4)">
+                <i class="bi bi-magic nav_icon"></i>
+                <span>Tour Virtual</span>
+              </a>
+              <a href="#" class="nav_link" @click="setActiveLink(5)">
+                <i class="bi bi-info-circle nav_icon"></i>
+                <span>Soporte</span>
+              </a>
             </div>
           </div>
-          <a href="#" class="nav_link" @click="preventDefault">
-            <i class="bx bx-log-out nav_icon"></i>
-            <span class="nav_name">SignOut</span>
-          </a>
         </nav>
       </div>
       <!-- Resto del contenido HTML -->
@@ -74,7 +90,7 @@
           if (toggle && nav && bodypd && headerpd) {
             toggle.addEventListener("click", () => {
               nav.classList.toggle("show");
-              toggle.classList.toggle("bx-x");
+              toggle.classList.toggle("bi-x");
               bodypd.classList.toggle("body-pd");
               headerpd.classList.toggle("body-pd");
             });
@@ -89,7 +105,7 @@
 
 <style scoped>
     a {
-      text-decoration: none
+      text-decoration: none;
     }
 
     .header {
@@ -102,15 +118,15 @@
       align-items: center;
       justify-content: space-between;
       padding: 0 1rem;
-      background-color: var(--white-color);
+      background-color: var(--primary-color);
       z-index: var(--z-fixed);
-      transition: .5s
+      transition: .5s;
     }
 
     .header_toggle {
-      color: var(--first-color);
+      color: var(--white-color);
       font-size: 1.5rem;
-      cursor: pointer
+      cursor: pointer;
     }
 
     .header_img {
@@ -119,23 +135,23 @@
       display: flex;
       justify-content: center;
       border-radius: 50%;
-      overflow: hidden
+      overflow: hidden;
     }
 
     .header_img img {
-      width: 40px
+      width: 40px;
     }
 
-    .l-navbar {
+    .sidenavbar {
       position: fixed;
       top: 0;
       left: -30%;
-      width: var(--nav-width);
+      width: var(--sidenav-width);
       height: 100vh;
-      background-color: var(--first-color);
-      padding: .5rem 1rem 0 0;
+      background-color: var(--white-color);
+      padding: .5rem 0 0 0;
       transition: .5s;
-      z-index: var(--z-fixed)
+      z-index: var(--z-fixed);
     }
 
     .nav {
@@ -143,7 +159,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      overflow: hidden
+      overflow: hidden;
     }
 
     .nav_logo,
@@ -152,94 +168,88 @@
       grid-template-columns: max-content max-content;
       align-items: center;
       column-gap: 1rem;
-      padding: .5rem 0 .5rem 1.5rem
+      padding: .5rem 0 .5rem 1.5rem;
     }
 
     .nav_logo {
-      margin-bottom: 2rem
+      margin-bottom: 2rem;
     }
 
     .nav_logo-icon {
       font-size: 1.25rem;
-      color: var(--white-color)
+      padding-right: 1rem;
+      color: var(--white-color);
     }
 
     .nav_logo-name {
-      color: var(--white-color);
-      font-weight: 700
+      color: var(--font-color);
+      font-weight: 600;
     }
 
     .nav_link {
       position: relative;
-      color: var(--first-color-light);
-      margin-bottom: 1.5rem;
-      transition: .3s
+      color: var(--font-color);
+      margin-bottom: 0.125rem;
+      transition: .3s;
     }
 
     .nav_link:hover {
-      color: var(--white-color)
+      color: var(--primary-color);
     }
 
     .nav_icon {
-      font-size: 1.25rem
+      font-size: 1.25rem;
+      padding-right: 1rem;
     }
 
     .show {
-      left: 0
+      left: 0;
     }
 
     .body-pd {
-      padding-left: calc(var(--nav-width) + 1rem)
+      padding-left: calc(var(--sidenav-width) + 1rem);
     }
 
     .active {
-      color: var(--white-color)
-    }
-
-    .active::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      width: 2px;
-      height: 32px;
-      background-color: var(--white-color)
+      color: var(--primary-color);
+      background-color: var(--gray-color);
     }
 
     .height-100 {
-      height: 100vh
+      height: 100vh;
     }
 
     @media screen and (min-width: 768px) {
       body {
         margin: calc(var(--header-height) + 1rem) 0 0 0;
-        padding-left: calc(var(--nav-width) + 2rem)
+        padding-left: calc(var(--sidenav-width) + 2rem);
       }
 
       .header {
         height: calc(var(--header-height) + 1rem);
-        padding: 0 2rem 0 calc(var(--nav-width) + 2rem)
+        padding: 0 2rem 0 calc(var(--sidenav-width) + 2rem);
       }
 
       .header_img {
         width: 40px;
-        height: 40px
+        height: 40px;
       }
 
       .header_img img {
-        width: 45px
+        width: 45px;
       }
 
-      .l-navbar {
+      .sidenavbar {
         left: 0;
-        padding: 1rem 1rem 0 0
+        padding: 1rem 0 0 0;
       }
 
       .show {
-        width: calc(var(--nav-width) + 156px)
+        width: calc(var(--sidenav-width) + 132px);
       }
 
       .body-pd {
-        padding-left: calc(var(--nav-width) + 188px)
+        padding-left: calc(var(--sidenav-width) + 188px);
       }
     }
 </style>
