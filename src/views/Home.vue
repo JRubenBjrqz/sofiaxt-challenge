@@ -1,10 +1,20 @@
-<script setup lang="ts">
+<script lang="ts">
+import Sidebar from '../components/Sidebar.vue';
+
+export default {
+  components: { Sidebar },
+  name: 'App',
+  created () {
+    document.title = "Inicio";
+  }
+}
 // import { ref } from 'vue'
 // defineProps<{ msg: string }>()
 // const count = ref(0)
 </script>
 
 <template>
+    <Sidebar/>
   <!-- <h1>{{ msg }}</h1>
   <div class="card">
     <button type="button" @click="count++">count is {{ count }}</button>
