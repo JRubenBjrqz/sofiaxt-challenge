@@ -46,39 +46,13 @@
       </nav>
     </div>
       <!-- Resto del contenido HTML -->
-      <div class="vh-100 bg-info">
+      <div class="vh-100">
         <TeacherBanner
           teacherCover="https://htmlcolorcodes.com/assets/images/colors/white-color-solid-background-1920x1080.png" 
           teacherPicture="https://images.pexels.com/photos/7092613/pexels-photo-7092613.jpeg?cs=srgb&dl=pexels-rdne-stock-project-7092613.jpg&fm=jpg"
           teacherFullName="Eduardo Mexía"
         />
-        <div>
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-8 d-flex justify-content-between align-items-center">
-                <button class="btn btn-primary btn-sm">
-                  General
-                </button>
-                <button class="btn btn-primary btn-sm">
-                  Mis libros
-                </button>
-                <button class="btn btn-primary btn-sm">
-                  Mis favoritos
-                </button>
-                <button class="btn btn-primary btn-sm">
-                  Bibliotecas de sofia xt
-                </button>
-              </div>
-              <div class="col-lg-4 d-flex align-items-center">
-                <i class="bi bi-funnel"></i>
-                <div class="input-group mb-3">
-                  <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
-                  <input type="text" class="form-control form-control-sm w-25" placeholder="Buscar tema, libro, nivel, autor">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <Simplebar/>
         <div id="carousel-1" class="carousel slide" data-bs-ride="false">
     <div class="carousel-inner">
         <div class="carousel-item active">
@@ -292,45 +266,47 @@
 <script>
 import HeaderProfile from '../components/Header/Profile.vue';
 import TeacherBanner from '../components/Teacher/Banner.vue';
+import Simplebar from '../components/Filters/Simplebar.vue';
 
-  export default {
-    components: { 
-      HeaderProfile,
-      TeacherBanner
+export default {
+  components: { 
+    HeaderProfile,
+    TeacherBanner,
+    Simplebar
+  },
+  data() {
+    return {
+      isNavbarVisible: false,
+      isHeaderPadding: false,
+    };
+  },
+  methods: {
+    toggleNavbar() {
+      this.isNavbarVisible = !this.isNavbarVisible;
+      this.isHeaderPadding = !this.isHeaderPadding;
     },
-    data() {
-      return {
-        isNavbarVisible: false,
-        isHeaderPadding: false,
+  },
+  created() {
+    document.addEventListener("DOMContentLoaded", () => {
+      const showNavbar = (toggleId, navId, bodyId, headerId) => {
+          toggle = document.getElementById(header-toggle),
+          nav = document.getElementById(nav-bar),
+          bodypd = document.getElementById(body-pd),
+          headerpd = document.getElementById(header);
+
+        if (toggle && nav && bodypd && headerpd) {
+          toggle.addEventListener("click", () => {
+            nav.classList.toggle("show");
+            bodypd.classList.toggle("body-pd");
+            headerpd.classList.toggle("body-pd");
+          });
+        }
       };
-    },
-    methods: {
-      toggleNavbar() {
-        this.isNavbarVisible = !this.isNavbarVisible;
-        this.isHeaderPadding = !this.isHeaderPadding;
-      },
-    },
-    created() {
-      document.addEventListener("DOMContentLoaded", () => {
-        const showNavbar = (toggleId, navId, bodyId, headerId) => {
-            toggle = document.getElementById(header-toggle),
-            nav = document.getElementById(nav-bar),
-            bodypd = document.getElementById(body-pd),
-            headerpd = document.getElementById(header);
-  
-          if (toggle && nav && bodypd && headerpd) {
-            toggle.addEventListener("click", () => {
-              nav.classList.toggle("show");
-              bodypd.classList.toggle("body-pd");
-              headerpd.classList.toggle("body-pd");
-            });
-          }
-        };
-  
-        showNavbar("header-toggle", "nav-bar", "body-pd", "header");
-      });
-    }
-  };
+
+      showNavbar("header-toggle", "nav-bar", "body-pd", "header");
+    });
+  }
+};
 </script>
 
 <style scoped>
@@ -435,7 +411,7 @@ import TeacherBanner from '../components/Teacher/Banner.vue';
 @media screen and (min-width: 768px) {
   #body-pd {
     margin: calc(var(--header-height) + 1rem) 0 0 0;
-    padding-left: calc(var(--sidebar-width) + 2rem);
+    padding-left: calc(var(--sidebar-width) + 0.2rem);
   }
 
   .header {
