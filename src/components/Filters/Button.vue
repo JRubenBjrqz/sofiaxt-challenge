@@ -3,11 +3,12 @@ import { defineProps } from "vue";
 
 const props = defineProps({
   buttonText: String,
+  isActive: Boolean
 });
 </script>
 
 <template>
-    <a class="btn-section text-uppercase">
+    <a :class="['btn-section', 'text-uppercase', { 'active': isActive }]">
         {{ buttonText }}
     </a>
 </template>

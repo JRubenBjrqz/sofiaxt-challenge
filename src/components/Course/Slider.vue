@@ -42,6 +42,7 @@ import Book from "../Course/Book.vue";
                                 bookTitle="Biología Secundaria"
                                 bookDescription="Hector Castro"
                                 bookThemes="20 temas"
+                                :isActive="true"
                             />
                         </div>     
                     </div>
@@ -98,6 +99,7 @@ import Book from "../Course/Book.vue";
                                 bookTitle="Biología Secundaria"
                                 bookDescription="Hector Castro"
                                 bookThemes="20 temas"
+                                :isActive="true"
                             />
                         </div>
                     </div>

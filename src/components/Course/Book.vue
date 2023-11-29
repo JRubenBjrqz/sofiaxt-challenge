@@ -7,6 +7,7 @@ const props = defineProps({
   bookTitle: String,
   bookDescription: String,
   bookThemes: String,
+  isActive: Boolean
 });
 </script>
 
@@ -27,7 +28,7 @@ const props = defineProps({
                         <i class="bi bi-list-ol book-list me-1"></i>
                         <p class="text-muted mb-0 book-themes">{{ bookThemes }}</p>
                     </div>
-                    <i class="bi bi-download book-download"></i>
+                    <i :class="['bi', 'bi-download', 'book-download', { 'book-download-active': isActive }]"></i>
                 </div>
             </div>
         </div>
@@ -86,5 +87,9 @@ const props = defineProps({
 .book-download {
     font-size: 12px;
     color: gray;
+}
+
+.book-download-active {
+    color: var(--primary-color);
 }
 </style>

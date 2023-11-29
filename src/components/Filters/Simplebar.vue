@@ -7,7 +7,7 @@ import Button from "../Filters/Button.vue";
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 col-lg-7 d-flex justify-content-between align-items-center px-0 pt-4 pb-3">
-                <Button buttonText="General" />
+                <Button buttonText="General" :isActive="true"/>
                 <Button buttonText="Mis libros" />
                 <Button buttonText="Mis favoritos" />
                 <Button buttonText="Bibliotecas de sofiaxt" />
