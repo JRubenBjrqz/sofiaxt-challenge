@@ -1,57 +1,48 @@
 <template>
-    <div id="body-pd">
-      <header class="header" :class="{ 'body-pd': isHeaderPd }" id="header">
-        <div class="header_toggle">
-          <i class="bi bi-list" @click="toggleNavbar" id="header-toggle"></i>
-        </div>
-        <div class="d-flex px-3 py-1 header-dropdown rounded-pill">
-          <span class="header_font">Hi, Roshan</span>
-          <div class="px-3">
-            <i class="bi bi-clock header_icon"></i>
-            <i class="bi bi-bell header_icon"></i>
-          </div>
-          <div class="header_img">
-          <img src="https://i.imgur.com/hczKIze.jpg" alt="" />
-        </div>
-        </div>
-      </header>
-      <div class="sidenavbar" :class="{ 'show': isNavbarVisible }" id="nav-bar">
-        <nav class="nav">
-          <div>
-            <a href="#" class="nav_logo">
-              <img src="https://www.sofiaxt.com/favicon-16x16.png" alt="" class="nav_logo-icon">
-              <span class="nav_logo-name">SofíaXT</span>
-            </a>
-            <a href="#" class="nav_link" @click="preventDefault">
-                <i class="bi bi-house nav_icon"></i>
-                <span>Inicio</span>
-            </a>
-            <div class="nav_list">
-              <a href="#" class="nav_link active" @click="setActiveLink(1)">
-                <i class="bi bi-people nav_icon"></i>
-                <span>Grupos</span>
-              </a>
-              <!-- Resto de enlaces aquí -->
-              <a href="#" class="nav_link" @click="setActiveLink(2)">
-                <i class="bi bi-journal nav_icon"></i>
-                <span>Smartbooks</span>
-              </a>
-              <a href="#" class="nav_link" @click="setActiveLink(3)">
-                <i class="bi bi-gear nav_icon"></i>
-                <span>Utilidades</span>
-              </a>
-              <a href="#" class="nav_link" @click="setActiveLink(4)">
-                <i class="bi bi-magic nav_icon"></i>
-                <span>Tour Virtual</span>
-              </a>
-              <a href="#" class="nav_link" @click="setActiveLink(5)">
-                <i class="bi bi-info-circle nav_icon"></i>
-                <span>Soporte</span>
-              </a>
-            </div>
-          </div>
-        </nav>
+  <div id="body-pd">
+    <header class="header" :class="{ 'body-pd': isHeaderPd }" id="header">
+      <div class="header-toggle">
+        <i class="bi bi-list" @click="toggleNavbar" id="header-toggle"></i>
       </div>
+      <HeaderProfile userFirstName="Roshan" 
+      userPicture="https://media.istockphoto.com/id/1391298352/photo/attractive-caucasian-smiling-handsome-man-in-blue-t-shirt-looking-right.webp?b=1&s=170667a&w=0&k=20&c=U8Dzr0a7lNHzdAhZpIXIglvPMADeMiU49cAdegCoO-4="/>
+    </header>
+    <div class="sidenav" :class="{ 'show': isNavbarVisible }" id="nav-bar">
+      <nav class="nav">
+        <div>
+          <a href="#" class="nav-logo">
+            <img src="https://www.sofiaxt.com/favicon-16x16.png" alt="" class="nav-logo-icon">
+            <span class="nav-logo-name">SofíaXT</span>
+          </a>
+          <a href="#" class="nav-link" @click="preventDefault">
+              <i class="bi bi-house nav_icon"></i>
+              <span>Inicio</span>
+          </a>
+          <div class="nav_list">
+            <a href="#" class="nav-link active" @click="setActiveLink(1)">
+              <i class="bi bi-people nav_icon"></i>
+              <span>Grupos</span>
+            </a>
+            <a href="#" class="nav-link" @click="setActiveLink(2)">
+              <i class="bi bi-journal nav_icon"></i>
+              <span>Smartbooks</span>
+            </a>
+            <a href="#" class="nav-link" @click="setActiveLink(3)">
+              <i class="bi bi-gear nav_icon"></i>
+              <span>Utilidades</span>
+            </a>
+            <a href="#" class="nav-link" @click="setActiveLink(4)">
+              <i class="bi bi-magic nav_icon"></i>
+              <span>Tour Virtual</span>
+            </a>
+            <a href="#" class="nav-link" @click="setActiveLink(5)">
+              <i class="bi bi-info-circle nav_icon"></i>
+              <span>Soporte</span>
+            </a>
+          </div>
+        </div>
+      </nav>
+    </div>
       <!-- Resto del contenido HTML -->
       <div class="vh-100 bg-info">
         <div class="user_profile_cap">
@@ -311,7 +302,10 @@
 </template>
   
 <script>
+import HeaderProfile from '../components/HeaderProfile.vue';
+
   export default {
+    components: { HeaderProfile },
     data() {
       return {
         isNavbarVisible: false,
@@ -365,96 +359,79 @@
 </script>
 
 <style scoped>
-    a {
-      text-decoration: none;
-    }
+.header {
+  width: 100%;
+  height: var(--header-height);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  background-color: var(--primary-color);
+  z-index: var(--z-fixed);
+  transition: .5s;
+}
 
-    .header {
-      width: 100%;
-      height: var(--header-height);
-      position: fixed;
-      top: 0;
-      left: 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 1rem;
-      background-color: var(--primary-color);
-      z-index: var(--z-fixed);
-      transition: .5s;
-    }
+.header-toggle {
+  font-size: 1.5rem;
+  color: var(--white-color);
+  cursor: pointer;
+}
 
-    .header_toggle {
-      color: var(--white-color);
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
+.sidenav {
+  position: fixed;
+  top: 0;
+  left: -30%;
+  width: var(--sidenav-width);
+  height: 100vh;
+  background-color: var(--white-color);
+  padding: .5rem 0 0 0;
+  transition: .5s;
+  z-index: var(--z-fixed);
+}
 
-    .header_img {
-      width: 24px;
-      height: 24px;
-      display: flex;
-      justify-content: center;
-      border-radius: 50%;
-      overflow: hidden;
-    }
+.nav {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
 
-    .header_img img {
-      width: 40px;
-    }
+.nav-logo,
+.nav-link {
+  display: grid;
+  grid-template-columns: max-content max-content;
+  align-items: center;
+  column-gap: 1rem;
+  padding: .5rem 0 .5rem 1.5rem;
+}
 
-    .sidenavbar {
-      position: fixed;
-      top: 0;
-      left: -30%;
-      width: var(--sidenav-width);
-      height: 100vh;
-      background-color: var(--white-color);
-      padding: .5rem 0 0 0;
-      transition: .5s;
-      z-index: var(--z-fixed);
-    }
-
-    .nav {
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      overflow: hidden;
-    }
-
-    .nav_logo,
-    .nav_link {
-      display: grid;
-      grid-template-columns: max-content max-content;
-      align-items: center;
-      column-gap: 1rem;
-      padding: .5rem 0 .5rem 1.5rem;
-    }
-
-    .nav_logo {
+    .nav-logo {
       margin-bottom: 2rem;
     }
 
-    .nav_logo-icon {
+    .nav-logo-icon {
       font-size: 1.25rem;
       padding-right: 1rem;
       color: var(--white-color);
     }
 
-    .nav_logo-name {
+    .nav-logo-name {
       color: var(--font-color);
       font-weight: 600;
     }
 
-    .nav_link {
+    .nav-link {
       position: relative;
       color: var(--font-color);
       margin-bottom: 0.125rem;
       transition: .3s;
     }
 
-    .nav_link:hover {
+    .nav-link:hover {
       color: var(--primary-color);
     }
 
@@ -491,11 +468,7 @@
         padding: 0 2rem 0 calc(var(--sidenav-width) + 2rem);
       }
 
-      .header_img img {
-        width: 45px;
-      }
-
-      .sidenavbar {
+      .sidenav {
         left: 0;
         padding: 1rem 0 0 0;
       }
@@ -507,20 +480,6 @@
       .body-pd {
         padding-left: calc(var(--sidenav-width) + 188px);
       }
-    }
-
-    .header_icon {
-      font-size: 1rem;
-      color: var(--white-color);
-    }
-
-    .header_font {
-      font-size: 1rem;
-      color: var(--white-color);
-    }
-
-    .header-dropdown {
-      background-color: #5fa6d3;
     }
 
     .user_profile_cap {

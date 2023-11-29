@@ -27,3 +27,7 @@ body {
   font-size: var(--normal-font-size);
   transition: 0.5s;
 }
+
+a {
+  text-decoration: none;
+}
