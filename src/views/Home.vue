@@ -1,8 +1,10 @@
 <script lang="ts">
-import Sidenav from '../components/Sidenav.vue';
+import Sidebar from '../components/Sidebar.vue';
 
 export default {
-  components: { Sidenav },
+  components: { 
+    Sidebar 
+  },
   name: 'App',
   created () {
     document.title = "Inicio";
@@ -14,7 +16,7 @@ export default {
 </script>
 
 <template>
-    <Sidenav/>
+    <Sidebar/>
   <!-- <h1>{{ msg }}</h1>
   <div class="card">
     <button type="button" @click="count++">count is {{ count }}</button>

@@ -9,7 +9,7 @@
         userPicture="https://media.istockphoto.com/id/1391298352/photo/attractive-caucasian-smiling-handsome-man-in-blue-t-shirt-looking-right.webp?b=1&s=170667a&w=0&k=20&c=U8Dzr0a7lNHzdAhZpIXIglvPMADeMiU49cAdegCoO-4="
       />
     </header>
-    <div class="sidenav" :class="{ 'show': isNavbarVisible }" id="nav-bar">
+    <div class="sidebar" :class="{ 'show': isNavbarVisible }" id="nav-bar">
       <nav class="nav">
         <div>
           <a href="#" class="nav-logo">
@@ -47,12 +47,10 @@
     </div>
       <!-- Resto del contenido HTML -->
       <div class="vh-100 bg-info">
-        <BannerProfessor 
-          professorCover="https://htmlcolorcodes.com/assets/images/colors/white-color-solid-background-1920x1080.png" 
-          professorPicture="https://images.pexels.com/photos/7092613/pexels-photo-7092613.jpeg?cs=srgb&dl=pexels-rdne-stock-project-7092613.jpg&fm=jpg"
-          professorFullName="Eduardo Mexía"
-          proffesorFirstAchievement="3.3M"
-          proffesorSecondAchievement="Top 5 creadores de ejercicios"
+        <TeacherBanner
+          teacherCover="https://htmlcolorcodes.com/assets/images/colors/white-color-solid-background-1920x1080.png" 
+          teacherPicture="https://images.pexels.com/photos/7092613/pexels-photo-7092613.jpeg?cs=srgb&dl=pexels-rdne-stock-project-7092613.jpg&fm=jpg"
+          teacherFullName="Eduardo Mexía"
         />
         <div>
           <div class="container">
@@ -292,13 +290,13 @@
 </template>
   
 <script>
-import HeaderProfile from '../components/HeaderProfile.vue';
-import BannerProfessor from '../components/BannerProfessor.vue';
+import HeaderProfile from '../components/Header/Profile.vue';
+import TeacherBanner from '../components/Teacher/Banner.vue';
 
   export default {
     components: { 
       HeaderProfile,
-      BannerProfessor
+      TeacherBanner
     },
     data() {
       return {
@@ -357,11 +355,11 @@ import BannerProfessor from '../components/BannerProfessor.vue';
   cursor: pointer;
 }
 
-.sidenav {
+.sidebar {
   position: fixed;
   top: 0;
   left: -30%;
-  width: var(--sidenav-width);
+  width: var(--sidebar-width);
   height: 100vh;
   background-color: var(--white-color);
   padding: .5rem 0 0 0;
@@ -427,7 +425,7 @@ import BannerProfessor from '../components/BannerProfessor.vue';
 }
 
 .body-pd {
-  padding-left: calc(var(--sidenav-width) + 1rem);
+  padding-left: calc(var(--sidebar-width) + 1rem);
 }
 
 .height-100 {
@@ -437,25 +435,25 @@ import BannerProfessor from '../components/BannerProfessor.vue';
 @media screen and (min-width: 768px) {
   #body-pd {
     margin: calc(var(--header-height) + 1rem) 0 0 0;
-    padding-left: calc(var(--sidenav-width) + 2rem);
+    padding-left: calc(var(--sidebar-width) + 2rem);
   }
 
   .header {
     height: calc(var(--header-height) + 1rem);
-    padding: 0 2rem 0 calc(var(--sidenav-width) + 2rem);
+    padding: 0 2rem 0 calc(var(--sidebar-width) + 2rem);
   }
 
-  .sidenav {
+  .sidebar {
     left: 0;
     padding: 1rem 0 0 0;
   }
 
   .show {
-    width: calc(var(--sidenav-width) + 132px);
+    width: calc(var(--sidebar-width) + 132px);
   }
 
   .body-pd {
-    padding-left: calc(var(--sidenav-width) + 188px);
+    padding-left: calc(var(--sidebar-width) + 188px);
   }
 }
 
