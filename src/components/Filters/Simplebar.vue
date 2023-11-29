@@ -1,9 +1,5 @@
 <script setup>
-import { defineProps } from "vue";
 import Button from "../Filters/Button.vue";
-
-const props = defineProps({
-});
 </script>
 
 <template>
