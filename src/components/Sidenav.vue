@@ -1,41 +1,43 @@
 <template>
   <div id="body-pd">
-    <header class="header" :class="{ 'body-pd': isHeaderPd }" id="header">
+    <header class="header" :class="{ 'body-pd': isHeaderPadding }" id="header">
       <div class="header-toggle">
         <i class="bi bi-list" @click="toggleNavbar" id="header-toggle"></i>
       </div>
-      <HeaderProfile userFirstName="Roshan" 
-      userPicture="https://media.istockphoto.com/id/1391298352/photo/attractive-caucasian-smiling-handsome-man-in-blue-t-shirt-looking-right.webp?b=1&s=170667a&w=0&k=20&c=U8Dzr0a7lNHzdAhZpIXIglvPMADeMiU49cAdegCoO-4="/>
+      <HeaderProfile 
+        userFirstName="Roshan" 
+        userPicture="https://media.istockphoto.com/id/1391298352/photo/attractive-caucasian-smiling-handsome-man-in-blue-t-shirt-looking-right.webp?b=1&s=170667a&w=0&k=20&c=U8Dzr0a7lNHzdAhZpIXIglvPMADeMiU49cAdegCoO-4="
+      />
     </header>
     <div class="sidenav" :class="{ 'show': isNavbarVisible }" id="nav-bar">
       <nav class="nav">
         <div>
           <a href="#" class="nav-logo">
-            <img src="https://www.sofiaxt.com/favicon-16x16.png" alt="" class="nav-logo-icon">
+            <img src="https://www.sofiaxt.com/favicon-16x16.png" class="nav-logo-icon">
             <span class="nav-logo-name">SofíaXT</span>
           </a>
-          <a href="#" class="nav-link" @click="preventDefault">
+          <a href="#" class="nav-link active">
               <i class="bi bi-house nav_icon"></i>
               <span>Inicio</span>
           </a>
           <div class="nav_list">
-            <a href="#" class="nav-link active" @click="setActiveLink(1)">
+            <a href="#" class="nav-link">
               <i class="bi bi-people nav_icon"></i>
               <span>Grupos</span>
             </a>
-            <a href="#" class="nav-link" @click="setActiveLink(2)">
+            <a href="#" class="nav-link">
               <i class="bi bi-journal nav_icon"></i>
               <span>Smartbooks</span>
             </a>
-            <a href="#" class="nav-link" @click="setActiveLink(3)">
+            <a href="#" class="nav-link">
               <i class="bi bi-gear nav_icon"></i>
               <span>Utilidades</span>
             </a>
-            <a href="#" class="nav-link" @click="setActiveLink(4)">
+            <a href="#" class="nav-link">
               <i class="bi bi-magic nav_icon"></i>
               <span>Tour Virtual</span>
             </a>
-            <a href="#" class="nav-link" @click="setActiveLink(5)">
+            <a href="#" class="nav-link">
               <i class="bi bi-info-circle nav_icon"></i>
               <span>Soporte</span>
             </a>
@@ -45,25 +47,13 @@
     </div>
       <!-- Resto del contenido HTML -->
       <div class="vh-100 bg-info">
-        <div class="user_profile_cap">
-          <div class="user_profile_cover">
-            <img src="https://htmlcolorcodes.com/assets/images/colors/white-color-solid-background-1920x1080.png" alt="img"/>
-          </div>
-          <div class="user_profile_headline">
-              <img src="https://pbs.twimg.com/profile_images/1313073227594424321/hjnEFEWd_400x400.jpg" alt="img"/> 
-              <h2>Eduardo Mexia</h2>
-              <div class="d-flex">
-                <div class="me-2">
-                  <i class="bi bi-star-fill text-warning"></i>
-                  <span> 3.3M</span>
-                </div>
-                <div>
-                  <i class="bi bi-star-fill text-warning"></i>
-                  <span> Top 5: Mejores creadores de ejercicios</span>
-                </div>
-              </div>
-          </div>
-        </div>
+        <BannerProfessor 
+          professorCover="https://htmlcolorcodes.com/assets/images/colors/white-color-solid-background-1920x1080.png" 
+          professorPicture="https://images.pexels.com/photos/7092613/pexels-photo-7092613.jpeg?cs=srgb&dl=pexels-rdne-stock-project-7092613.jpg&fm=jpg"
+          professorFullName="Eduardo Mexía"
+          proffesorFirstAchievement="3.3M"
+          proffesorSecondAchievement="Top 5 creadores de ejercicios"
+        />
         <div>
           <div class="container">
             <div class="row">
@@ -303,49 +293,36 @@
   
 <script>
 import HeaderProfile from '../components/HeaderProfile.vue';
+import BannerProfessor from '../components/BannerProfessor.vue';
 
   export default {
-    components: { HeaderProfile },
+    components: { 
+      HeaderProfile,
+      BannerProfessor
+    },
     data() {
       return {
         isNavbarVisible: false,
-        isHeaderPd: false,
-        activeLink: null
+        isHeaderPadding: false,
       };
     },
     methods: {
       toggleNavbar() {
         this.isNavbarVisible = !this.isNavbarVisible;
-        this.isHeaderPd = !this.isHeaderPd;
+        this.isHeaderPadding = !this.isHeaderPadding;
       },
-      setActiveLink(linkNumber) {
-        this.activeLink = linkNumber;
-        // Aquí puedes realizar otras acciones si es necesario al establecer el enlace activo
-      },
-      preventDefault(event) {
-        event.preventDefault();
-      }
-    },
-    mounted() {
-      const linkColor = document.querySelectorAll(".nav_link");
-      linkColor.forEach((l) => l.addEventListener("click", this.colorLink));
-    },
-    beforeUnmount() {
-      const linkColor = document.querySelectorAll(".nav_link");
-      linkColor.forEach((l) => l.removeEventListener("click", this.colorLink));
     },
     created() {
       document.addEventListener("DOMContentLoaded", () => {
         const showNavbar = (toggleId, navId, bodyId, headerId) => {
-          const toggle = document.getElementById(toggleId),
-            nav = document.getElementById(navId),
-            bodypd = document.getElementById(bodyId),
-            headerpd = document.getElementById(headerId);
+            toggle = document.getElementById(header-toggle),
+            nav = document.getElementById(nav-bar),
+            bodypd = document.getElementById(body-pd),
+            headerpd = document.getElementById(header);
   
           if (toggle && nav && bodypd && headerpd) {
             toggle.addEventListener("click", () => {
               nav.classList.toggle("show");
-              toggle.classList.toggle("bi-x");
               bodypd.classList.toggle("body-pd");
               headerpd.classList.toggle("body-pd");
             });
@@ -409,124 +386,77 @@ import HeaderProfile from '../components/HeaderProfile.vue';
   padding: .5rem 0 .5rem 1.5rem;
 }
 
-    .nav-logo {
-      margin-bottom: 2rem;
-    }
+.nav-logo {
+  margin-bottom: 2rem;
+}
 
-    .nav-logo-icon {
-      font-size: 1.25rem;
-      padding-right: 1rem;
-      color: var(--white-color);
-    }
+.nav-logo-icon {
+  font-size: 1.25rem;
+  padding-right: 1rem;
+  color: var(--white-color);
+}
 
-    .nav-logo-name {
-      color: var(--font-color);
-      font-weight: 600;
-    }
+.nav-logo-name {
+  color: var(--font-color);
+  font-weight: 600;
+}
 
-    .nav-link {
-      position: relative;
-      color: var(--font-color);
-      margin-bottom: 0.125rem;
-      transition: .3s;
-    }
+.nav-link {
+  position: relative;
+  color: var(--font-color);
+  margin-bottom: 0.125rem;
+  transition: .3s;
+}
 
-    .nav-link:hover {
-      color: var(--primary-color);
-    }
+.nav-link:hover {
+  color: var(--primary-color);
+}
 
-    .nav_icon {
-      font-size: 1.25rem;
-      padding-right: 1rem;
-    }
+.nav_icon {
+  font-size: 1.25rem;
+  padding-right: 1rem;
+}
 
-    .show {
-      left: 0;
-    }
-
-    .body-pd {
-      padding-left: calc(var(--sidenav-width) + 1rem);
-    }
-
-    .active {
-      color: var(--primary-color);
-      background-color: var(--gray-color);
-    }
-
-    .height-100 {
-      height: 100vh;
-    }
-
-    @media screen and (min-width: 768px) {
-      #body-pd {
-        margin: calc(var(--header-height) + 1rem) 0 0 0;
-        padding-left: calc(var(--sidenav-width) + 2rem);
-      }
-
-      .header {
-        height: calc(var(--header-height) + 1rem);
-        padding: 0 2rem 0 calc(var(--sidenav-width) + 2rem);
-      }
-
-      .sidenav {
-        left: 0;
-        padding: 1rem 0 0 0;
-      }
-
-      .show {
-        width: calc(var(--sidenav-width) + 132px);
-      }
-
-      .body-pd {
-        padding-left: calc(var(--sidenav-width) + 188px);
-      }
-    }
-
-    .user_profile_cap {
-      width: 970;
-      height: auto 13;
-    }
-
-.user_profile_headline {
-  padding: 20px;
-  font-size: 16px;
+.active {
+  color: var(--primary-color);
   background-color: var(--gray-color);
 }
-.user_profile_headline img{
-    border: 1px solid #EEEEEE;
-    width: 96px;
-    height: 96px;
-    float: left;
-    margin: -70px 10px 0  0;
-    position: relative;
-    z-index: 111;
-}
-.user_profile_headline h2 {
-    margin: 0;
-    padding: 0;
-    font-size: 16px;
-    color: var(--primary-color);
-    font-weight: bold;
-    display: block;   
-}
-.user_profile_headline span {
-    font-size: 12px;
-    color:gray;
+
+.show {
+  left: 0;
 }
 
-.user-profile-headline i {
-  font-size: 10px;
+.body-pd {
+  padding-left: calc(var(--sidenav-width) + 1rem);
 }
 
-.user_profile_cover img {
-    width: 100%;
-    height: 160px;
-    -webkit-border-top-left-radius: 5px;
-    -webkit-border-top-right-radius: 5px;
-    -moz-border-radius-topleft: 5px;
-    -moz-border-radius-topright: 5px;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+.height-100 {
+  height: 100vh;
+}
+
+@media screen and (min-width: 768px) {
+  #body-pd {
+    margin: calc(var(--header-height) + 1rem) 0 0 0;
+    padding-left: calc(var(--sidenav-width) + 2rem);
   }
+
+  .header {
+    height: calc(var(--header-height) + 1rem);
+    padding: 0 2rem 0 calc(var(--sidenav-width) + 2rem);
+  }
+
+  .sidenav {
+    left: 0;
+    padding: 1rem 0 0 0;
+  }
+
+  .show {
+    width: calc(var(--sidenav-width) + 132px);
+  }
+
+  .body-pd {
+    padding-left: calc(var(--sidenav-width) + 188px);
+  }
+}
 
 </style>
