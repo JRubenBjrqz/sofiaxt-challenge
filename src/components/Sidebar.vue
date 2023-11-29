@@ -1,12 +1,19 @@
 <template>
-    <div>
+    <div id="body-pd">
       <header class="header" :class="{ 'body-pd': isHeaderPd }" id="header">
         <div class="header_toggle">
           <i class="bi bi-list" @click="toggleNavbar" id="header-toggle"></i>
         </div>
-        <!-- <div class="header_img">
+        <div class="d-flex px-3 py-1 header-dropdown rounded-pill">
+          <span class="header_font">Hi, Roshan</span>
+          <div class="px-3">
+            <i class="bi bi-clock header_icon"></i>
+            <i class="bi bi-bell header_icon"></i>
+          </div>
+          <div class="header_img">
           <img src="https://i.imgur.com/hczKIze.jpg" alt="" />
-        </div> -->
+        </div>
+        </div>
       </header>
       <div class="sidenavbar" :class="{ 'show': isNavbarVisible }" id="nav-bar">
         <nav class="nav">
@@ -46,10 +53,51 @@
         </nav>
       </div>
       <!-- Resto del contenido HTML -->
+      <div class="vh-100 bg-info">
+        <div class="user_profile_cap">
+          <div class="user_profile_cover">
+            <img src="https://htmlcolorcodes.com/assets/images/colors/white-color-solid-background-1920x1080.png" alt="img"/>
+          </div>
+          <div class="user_profile_headline">
+              <img src="https://pbs.twimg.com/profile_images/1313073227594424321/hjnEFEWd_400x400.jpg" alt="img"/> 
+              <h2>Eduardo Mexia</h2>
+              <div class="d-flex">
+                <div class="me-2">
+                  <i class="bi bi-star-fill text-warning"></i>
+                  <span> 3.3M</span>
+                </div>
+                <div>
+                  <i class="bi bi-star-fill text-warning"></i>
+                  <span> Top 5: Mejores creadores de ejercicios</span>
+                </div>
+              </div>
+          </div>
+        </div>
+        <div>
+          <div class="container">
+            <div class="row">
+              <div class="column">
+                <button class="btn btn-primary">
+                General
+              </button>
+              <button class="btn btn-primary">
+                Mis libros
+              </button>
+              <button class="btn btn-primary">
+                Mis favoritos
+              </button>
+              <button class="btn btn-primary">
+                Bibliotecas de sofia xt
+              </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </template>
+</template>
   
-  <script>
+<script>
   export default {
     data() {
       return {
@@ -101,7 +149,7 @@
       });
     }
   };
-  </script>
+</script>
 
 <style scoped>
     a {
@@ -130,8 +178,8 @@
     }
 
     .header_img {
-      width: 35px;
-      height: 35px;
+      width: 24px;
+      height: 24px;
       display: flex;
       justify-content: center;
       border-radius: 50%;
@@ -220,7 +268,7 @@
     }
 
     @media screen and (min-width: 768px) {
-      body {
+      #body-pd {
         margin: calc(var(--header-height) + 1rem) 0 0 0;
         padding-left: calc(var(--sidenav-width) + 2rem);
       }
@@ -228,11 +276,6 @@
       .header {
         height: calc(var(--header-height) + 1rem);
         padding: 0 2rem 0 calc(var(--sidenav-width) + 2rem);
-      }
-
-      .header_img {
-        width: 40px;
-        height: 40px;
       }
 
       .header_img img {
@@ -252,4 +295,66 @@
         padding-left: calc(var(--sidenav-width) + 188px);
       }
     }
+
+    .header_icon {
+      font-size: 1rem;
+      color: var(--white-color);
+    }
+
+    .header_font {
+      font-size: 1rem;
+      color: var(--white-color);
+    }
+
+    .header-dropdown {
+      background-color: #5fa6d3;
+    }
+
+    .user_profile_cap {
+      width: 970;
+      height: auto 13;
+    }
+
+.user_profile_headline {
+  padding: 20px;
+  font-size: 16px;
+  background-color: var(--gray-color);
+}
+.user_profile_headline img{
+    border: 1px solid #EEEEEE;
+    width: 96px;
+    height: 96px;
+    float: left;
+    margin: -70px 10px 0  0;
+    position: relative;
+    z-index: 111;
+}
+.user_profile_headline h2 {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    color: var(--primary-color);
+    font-weight: bold;
+    display: block;   
+}
+.user_profile_headline span {
+    font-size: 12px;
+    color:gray;
+}
+
+.user-profile-headline i {
+  font-size: 10px;
+}
+
+.user_profile_cover img {
+    width: 100%;
+    height: 160px;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+
 </style>
