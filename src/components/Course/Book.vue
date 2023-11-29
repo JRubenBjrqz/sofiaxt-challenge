@@ -2,7 +2,8 @@
 import { defineProps } from "vue";
 
 const props = defineProps({
-  bookNumber: String,
+  bookNumber: Number,
+  bookHeader: String,
   bookCover: String,
   bookTitle: String,
   bookDescription: String,
@@ -15,7 +16,9 @@ const props = defineProps({
 <template>
     <div class="d-flex justify-content-center align-items-center">
         <div class="card border border-3 border-light book-card">
-            <h1 class="position-absolute px-3 bg-white border border-light book-number">{{ bookNumber }}</h1>
+            <h1 :class="['position-absolute', 'px-3', 'bg-white', 'border', 'border-light', 'book-number', { 'number-blue': bookNumber === 1, 'number-green': bookNumber === 2, 'number-orange': bookNumber === 3 }]">
+                {{ bookHeader }}
+            </h1>
             <img class="card-img book-image" 
                 :src="bookCover" />
             <div class="card-body py-1 px-2">
@@ -37,14 +40,14 @@ const props = defineProps({
 </template>
 
 <style scoped>
-.book-card{
+.book-card {
     width: 275px;
     -webkit-box-shadow: 5px 6px 9px 0px rgba(194,194,194,1);
     -moz-box-shadow: 5px 6px 9px 0px rgba(194,194,194,1);
     box-shadow: 5px 6px 9px 0px rgba(194,194,194,1);
 }
 
-.book-number{
+.book-number {
     font-size: 28px;
     font-weight: 700;
     width: 48px;
@@ -96,5 +99,17 @@ const props = defineProps({
 
 .book-download-active {
     color: var(--primary-color);
+}
+
+.number-blue {
+  color: #31A6DA;
+}
+
+.number-green {
+  color: #8FC047;
+}
+
+.number-orange {
+  color: #E18E28; 
 }
 </style>
