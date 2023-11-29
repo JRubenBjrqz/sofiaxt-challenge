@@ -15,6 +15,7 @@ import Book from "../Course/Book.vue";
                                 bookTitle="Geografía Secundaria"
                                 bookDescription="Irma Mendoza"
                                 bookThemes="20 temas"
+                                :isBookmarkActive="true"
                             />
                         </div>
                         <div class="col-12 col-md-6 col-lg-3 p-3">
@@ -33,6 +34,7 @@ import Book from "../Course/Book.vue";
                                 bookTitle="Biología Secundaria"
                                 bookDescription="Diana Padilla"
                                 bookThemes="20 temas"
+                                :isBookmarkActive="true"
                             />
                         </div>
                         <div class="col-12 col-md-6 col-lg-3 p-3">
@@ -42,7 +44,8 @@ import Book from "../Course/Book.vue";
                                 bookTitle="Biología Secundaria"
                                 bookDescription="Hector Castro"
                                 bookThemes="20 temas"
-                                :isActive="true"
+                                :isDownloadActive="true"
+                                :isBookmarkActive="true"
                             />
                         </div>     
                     </div>
@@ -72,6 +75,7 @@ import Book from "../Course/Book.vue";
                                 bookTitle="Geografía Secundaria"
                                 bookDescription="Irma Mendoza"
                                 bookThemes="20 temas"
+                                :isBookmarkActive="true"
                             />
                         </div>
                         <div class="col-12 col-md-6 col-lg-3 p-3">
@@ -90,6 +94,7 @@ import Book from "../Course/Book.vue";
                                 bookTitle="Biología Secundaria"
                                 bookDescription="Diana Padilla"
                                 bookThemes="20 temas"
+                                :isBookmarkActive="true"
                             />
                         </div>
                         <div class="col-12 col-md-6 col-lg-3 p-3">
@@ -99,7 +104,8 @@ import Book from "../Course/Book.vue";
                                 bookTitle="Biología Secundaria"
                                 bookDescription="Hector Castro"
                                 bookThemes="20 temas"
-                                :isActive="true"
+                                :isDownloadActive="true"
+                                :isBookmarkActive="true"
                             />
                         </div>
                     </div>

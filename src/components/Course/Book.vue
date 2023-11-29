@@ -7,7 +7,8 @@ const props = defineProps({
   bookTitle: String,
   bookDescription: String,
   bookThemes: String,
-  isActive: Boolean
+  isDownloadActive: Boolean,
+  isBookmarkActive: Boolean
 });
 </script>
 
@@ -19,7 +20,7 @@ const props = defineProps({
                 :src="bookCover" />
             <div class="card-body py-1 px-2">
                 <div class="d-flex justify-content-end">
-                    <i class="bi bi-bookmark book-bookmark"></i>
+                    <i :class="['bi', { 'bi-bookmark': !isBookmarkActive, 'bi-bookmark-fill': isBookmarkActive }, 'book-bookmark', { 'book-bookmark-active': isBookmarkActive }]"></i>
                 </div>
                 <h5 class="card-subtitle mb-1">{{ bookTitle }}</h5>
                 <p class="card-text book-text">{{ bookDescription }}</p>
@@ -28,7 +29,7 @@ const props = defineProps({
                         <i class="bi bi-list-ol book-list me-1"></i>
                         <p class="text-muted mb-0 book-themes">{{ bookThemes }}</p>
                     </div>
-                    <i :class="['bi', 'bi-download', 'book-download', { 'book-download-active': isActive }]"></i>
+                    <i :class="['bi', 'bi-download', 'book-download', { 'book-download-active': isDownloadActive }]"></i>
                 </div>
             </div>
         </div>
@@ -67,6 +68,10 @@ const props = defineProps({
 .book-bookmark {
     font-size: 20px;
     color: gray;
+}
+
+.book-bookmark-active {
+    color: #dFcd4c;
 }
 
 .book-text {
