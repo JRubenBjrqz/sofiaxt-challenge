@@ -1,12 +1,14 @@
 <script setup>
 import Book from "../Course/Book.vue";
+import Dropdown from "../Course/Dropdown.vue";
 </script>
 
 <template>
-    <div id="carousel-popular" class="carousel carousel-dark slide" data-bs-ride="false">
+    <Dropdown dropdownText="Los más populares" class="ps-5 pt-4 slider-background"/>
+    <div id="carousel-popular" class="carousel carousel-dark slide slider-background" data-bs-ride="false">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <div class="container-fluid slider-background">
+                <div class="container-fluid">
                     <div class="row py-3">
                         <div class="col-12 col-md-6 col-lg-3 p-3">
                             <Book 
@@ -63,6 +65,7 @@ import Book from "../Course/Book.vue";
             </a>
         </div>
     </div>
+    <h5 class="ps-5 pt-4 pb-0 m-0">Secundaria</h5>
     <div id="carousel-high-school" class="carousel carousel-dark slide" data-bs-ride="false">
         <div class="carousel-inner">
             <div class="carousel-item active">
