@@ -54,7 +54,6 @@
       />
       <Simplebar/>
       <Slider/>
-      <Slider/>
     </div>
   </div>
 </template>

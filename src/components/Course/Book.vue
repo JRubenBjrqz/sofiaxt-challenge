@@ -1,23 +1,31 @@
 <script setup>
+import { defineProps } from "vue";
 
+const props = defineProps({
+  bookNumber: String,
+  bookCover: String,
+  bookTitle: String,
+  bookDescription: String,
+  bookThemes: String,
+});
 </script>
 
 <template>
     <div class="d-flex justify-content-center align-items-center">
-        <div class="card book-card border border-3 border-light" style="width: 275px;">
-            <h1 class="position-absolute px-3 bg-white border border-light book-number">1°</h1>
+        <div class="card border border-3 border-light book-card">
+            <h1 class="position-absolute px-3 bg-white border border-light book-number">{{ bookNumber }}</h1>
             <img class="card-img book-image" 
-                src="https://patimes.org/wp-content/uploads/2022/12/History-alternative-image-for-PA-Times.jpg" />
+                :src="bookCover" />
             <div class="card-body py-1 px-2">
                 <div class="d-flex justify-content-end">
                     <i class="bi bi-bookmark book-bookmark"></i>
                 </div>
-                <h5 class="card-subtitle mb-1">Nombre Libro</h5>
-                <p class="card-text book-text">Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                <h5 class="card-subtitle mb-1">{{ bookTitle }}</h5>
+                <p class="card-text book-text">{{ bookDescription }}</p>
                 <div class="d-flex justify-content-between align-items-center mb-2">
                     <div class="d-flex align-items-center">
                         <i class="bi bi-list-ol book-list me-1"></i>
-                        <p class="text-muted mb-0 book-themes">20 temas</p>
+                        <p class="text-muted mb-0 book-themes">{{ bookThemes }}</p>
                     </div>
                     <i class="bi bi-download book-download"></i>
                 </div>
@@ -28,6 +36,7 @@
 
 <style scoped>
 .book-card{
+    width: 275px;
     -webkit-box-shadow: 5px 6px 9px 0px rgba(194,194,194,1);
     -moz-box-shadow: 5px 6px 9px 0px rgba(194,194,194,1);
     box-shadow: 5px 6px 9px 0px rgba(194,194,194,1);
