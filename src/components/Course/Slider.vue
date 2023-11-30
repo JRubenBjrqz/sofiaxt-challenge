@@ -1,6 +1,7 @@
 <script setup>
 import Book from "../Course/Book.vue";
 import Dropdown from "../Course/Dropdown.vue";
+import FAB from "../Course/FAB.vue";
 </script>
 
 <template>
@@ -65,6 +66,7 @@ import Dropdown from "../Course/Dropdown.vue";
             </a>
         </div>
     </div>
+    <FAB class="position-absolute end-0 z-3"/>
     <h5 class="ps-5 pt-4 pb-0 m-0">Secundaria</h5>
     <div id="carousel-high-school" class="carousel carousel-dark slide" data-bs-ride="false">
         <div class="carousel-inner">
