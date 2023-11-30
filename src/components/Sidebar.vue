@@ -1,3 +1,30 @@
+<script>
+import HeaderProfile from '../components/Header/Profile.vue';
+import TeacherBanner from '../components/Teacher/Banner.vue';
+import Simplebar from '../components/Filters/Simplebar.vue';
+import Slider from '../components/Course/Slider.vue';
+
+export default {
+  components: { 
+    HeaderProfile,
+    TeacherBanner,
+    Simplebar,
+    Slider
+  },
+  data() {
+    return {
+      isNavbarVisible: false,
+    };
+  },
+  methods: {
+    toggleNavbar() {
+      this.isNavbarVisible = !this.isNavbarVisible;
+      this.isHeaderPadding = !this.isHeaderPadding;
+    },
+  },
+};
+</script>
+
 <template>
   <div id="body-pd">
     <header class="header" :class="{ 'header-pd': isHeaderPadding }" id="header">
@@ -45,7 +72,6 @@
         </div>
       </nav>
     </div>
-    <!-- Resto del contenido HTML -->
     <div :class="{ 'body-pd': isHeaderPadding }">
       <TeacherBanner
         teacherCover="https://htmlcolorcodes.com/assets/images/colors/white-color-solid-background-1920x1080.png" 
@@ -57,33 +83,6 @@
     </div>
   </div>
 </template>
-  
-<script>
-import HeaderProfile from '../components/Header/Profile.vue';
-import TeacherBanner from '../components/Teacher/Banner.vue';
-import Simplebar from '../components/Filters/Simplebar.vue';
-import Slider from '../components/Course/Slider.vue';
-
-export default {
-  components: { 
-    HeaderProfile,
-    TeacherBanner,
-    Simplebar,
-    Slider
-  },
-  data() {
-    return {
-      isNavbarVisible: false,
-    };
-  },
-  methods: {
-    toggleNavbar() {
-      this.isNavbarVisible = !this.isNavbarVisible;
-      this.isHeaderPadding = !this.isHeaderPadding;
-    },
-  },
-};
-</script>
 
 <style scoped>
 .header {
@@ -213,5 +212,4 @@ export default {
     padding-left: calc(var(--sidebar-width) + 4.5rem);
   }
 }
-
 </style>
