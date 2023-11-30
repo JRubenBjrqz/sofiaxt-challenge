@@ -1,6 +1,6 @@
 <template>
   <div id="body-pd">
-    <header class="header" :class="{ 'body-pd': isHeaderPadding }" id="header">
+    <header class="header" :class="{ 'header-pd': isHeaderPadding }" id="header">
       <div class="header-toggle">
         <i class="bi bi-list" @click="toggleNavbar" id="header-toggle"></i>
       </div>
@@ -46,7 +46,7 @@
       </nav>
     </div>
     <!-- Resto del contenido HTML -->
-    <div class="vh-100">
+    <div :class="{ 'body-pd': isHeaderPadding }">
       <TeacherBanner
         teacherCover="https://htmlcolorcodes.com/assets/images/colors/white-color-solid-background-1920x1080.png" 
         teacherPicture="https://images.pexels.com/photos/7092613/pexels-photo-7092613.jpeg?cs=srgb&dl=pexels-rdne-stock-project-7092613.jpg&fm=jpg"
@@ -74,7 +74,6 @@ export default {
   data() {
     return {
       isNavbarVisible: false,
-      isHeaderPadding: false,
     };
   },
   methods: {
@@ -83,26 +82,6 @@ export default {
       this.isHeaderPadding = !this.isHeaderPadding;
     },
   },
-  created() {
-    document.addEventListener("DOMContentLoaded", () => {
-      const showNavbar = (toggleId, navId, bodyId, headerId) => {
-          toggle = document.getElementById(header-toggle),
-          nav = document.getElementById(nav-bar),
-          bodypd = document.getElementById(body-pd),
-          headerpd = document.getElementById(header);
-
-        if (toggle && nav && bodypd && headerpd) {
-          toggle.addEventListener("click", () => {
-            nav.classList.toggle("show");
-            bodypd.classList.toggle("body-pd");
-            headerpd.classList.toggle("body-pd");
-          });
-        }
-      };
-
-      showNavbar("header-toggle", "nav-bar", "body-pd", "header");
-    });
-  }
 };
 </script>
 
@@ -198,7 +177,8 @@ export default {
 }
 
 .body-pd {
-  padding-left: calc(var(--sidebar-width) + 1rem);
+  padding-left: var(--sidebar-width);
+  transition: .5s;
 }
 
 .height-100 {
@@ -225,8 +205,12 @@ export default {
     width: calc(var(--sidebar-width) + 132px);
   }
 
-  .body-pd {
+  .header-pd {
     padding-left: calc(var(--sidebar-width) + 188px);
+  }
+
+  .body-pd {
+    padding-left: calc(var(--sidebar-width) + 4.5rem);
   }
 }
 
