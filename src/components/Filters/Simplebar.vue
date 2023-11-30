@@ -1,5 +1,6 @@
 <script setup>
 import Button from "../Filters/Button.vue";
+import Dropdown from "../Filters/Dropdown.vue";
 </script>
 
 <template>
@@ -10,7 +11,7 @@ import Button from "../Filters/Button.vue";
                 <Button buttonText="General" :isActive="true"/>
                 <Button buttonText="Mis libros" />
                 <Button buttonText="Mis favoritos" />
-                <Button buttonText="Bibliotecas de sofiaxt" />
+                <Dropdown dropdownText="Bibliotecas de SofíaXT" />
             </div>
             <div class="col-2 col-lg-1 d-flex justify-content-center align-items-center pt-4 pb-3">
                 <i class="bi bi-funnel filter-icon"></i>
